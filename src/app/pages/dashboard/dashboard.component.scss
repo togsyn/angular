@@ -1,0 +1,416 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+/* ================= LAYOUT ================= */
+
+.dashboard-layout{
+  display:flex;
+  height:100vh;
+  background:#f4f7fc;
+  overflow:hidden;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+  width:220px;
+  background:#081028;
+  color:white;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+}
+
+.profile-section{
+  text-align:center;
+  margin-bottom:18px;
+}
+
+.profile-pic{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:6px;
+}
+
+.profile-section h3{
+  font-size:14px;
+  margin-bottom:2px;
+}
+
+.profile-section p{
+  font-size:10px;
+  color:#d1d5db;
+}
+
+.profile-section input{
+  margin-top:5px;
+  width:100%;
+  font-size:9px;
+}
+
+/* SIDEBAR BUTTONS */
+
+.sidebar button{
+  width:100%;
+  height:34px;
+  margin-bottom:8px;
+  border:none;
+  border-radius:6px;
+  background:#16213e;
+  color:white;
+  cursor:pointer;
+  font-size:11px;
+  text-align:left;
+  padding-left:10px;
+  transition:0.3s;
+}
+
+.sidebar button:hover{
+  background:#24365c;
+}
+
+.logout-section{
+  margin-top:auto;
+}
+
+.logout-btn{
+  background:#ef4444 !important;
+}
+
+/* ================= MAIN CONTENT ================= */
+
+.main-content{
+  flex:1;
+  padding:14px;
+  overflow-y:auto;
+}
+
+/* ================= HEADER ================= */
+
+.top-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:14px;
+}
+
+.top-header h1{
+  font-size:20px;
+  color:#111827;
+}
+
+.top-header p{
+  font-size:11px;
+  color:#6b7280;
+}
+
+/* ================= SEARCH BAR ================= */
+
+.top-bar{
+  display:flex;
+  gap:6px;
+}
+
+.top-bar input,
+.top-bar select{
+  height:28px;
+  padding:3px 8px;
+  border:1px solid #d1d5db;
+  border-radius:5px;
+  outline:none;
+  font-size:10px;
+}
+
+.top-bar input{
+  width:160px;
+}
+
+/* ================= STUDENT CARDS ================= */
+
+.cards-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,230px));
+  gap:12px;
+}
+
+.card{
+  background:white;
+  border-radius:10px;
+  padding:12px;
+  min-height:145px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.05);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.card h3{
+  font-size:15px;
+  margin-bottom:5px;
+  color:#111827;
+}
+
+.card p{
+  font-size:11px;
+  margin:3px 0;
+  color:#374151;
+}
+
+.card small{
+  font-size:9px;
+  color:#6b7280;
+}
+
+/* VIEW BUTTON */
+
+.card button{
+  margin-top:8px;
+  height:24px;
+  border:none;
+  border-radius:5px;
+  background:#1677ff;
+  color:white;
+  font-size:9px;
+  cursor:pointer;
+}
+
+/* ================= INFO BOX ================= */
+
+.info-box{
+  background:white;
+  border-radius:10px;
+  padding:14px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* ================= MORE INFO ================= */
+
+.big-form{
+  background:white;
+  border-radius:8px;
+  padding:10px;
+  width:100%;
+  box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* HEADER */
+
+.form-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
+  position:relative;
+}
+
+.form-header h2{
+  font-size:14px;
+  color:#111827;
+}
+
+/* SMALL EDIT BUTTON */
+
+/* ===== EDIT BUTTON TOP RIGHT SMALL ===== */
+
+.form-header{
+  position:relative;
+}
+
+.edit-btn{
+  position:absolute;
+  top:-2px;
+  right:0;
+  height:16px;
+  min-height:16px;
+  line-height:16px;
+  padding:0 6px;
+  border:none;
+  border-radius:3px;
+  background:#111827;
+  color:white;
+  font-size:7px;
+  font-weight:500;
+  cursor:pointer;
+  width:auto;
+}
+
+/* SECTION TITLES */
+
+.big-form h3{
+  font-size:11px;
+  margin-top:8px;
+  margin-bottom:5px;
+  color:#111827;
+}
+
+/* GRID */
+
+/* ===== SMALL INPUT FIELDS ===== */
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 240px);
+  gap:8px;
+}
+
+/* FORM GROUP */
+
+.form-group{
+  display:flex;
+  flex-direction:column;
+}
+
+/* LABEL */
+
+.form-group label{
+  font-size:8px;
+  margin-bottom:2px;
+  color:#374151;
+}
+
+/* INPUTS */
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:240px;
+  height:18px;
+  padding:1px 5px;
+  border:1px solid #d1d5db;
+  border-radius:3px;
+  outline:none;
+  font-size:8px;
+  background:white;
+}
+
+/* TEXTAREA */
+
+.form-group textarea{
+  height:38px;
+  resize:none;
+  padding-top:4px;
+}
+
+/* PHONE SECTION */
+
+.phone-wrapper{
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+/* COUNTRY CODE */
+
+.country-code{
+  width:50px !important;
+  height:18px !important;
+  font-size:8px !important;
+  padding:1px 3px !important;
+}
+
+/* PHONE INPUT */
+
+.phone-wrapper input{
+  width:185px !important;
+}
+
+/* CHECKBOX */
+
+.checkbox-group{
+  display:flex;
+  gap:10px;
+  margin-top:6px;
+  font-size:8px;
+}
+
+/* BUTTON AREA */
+
+/* ===== SMALL SAVE & CANCEL BUTTONS ===== */
+
+.button-group{
+  display:flex;
+  justify-content:flex-end;
+  gap:4px;
+  margin-top:8px;
+}
+
+.save-btn,
+.cancel-btn{
+  height:16px;
+  min-height:16px;
+  line-height:16px;
+  padding:0 6px;
+  border:none;
+  border-radius:3px;
+  font-size:7px;
+  font-weight:500;
+  cursor:pointer;
+  width:auto;
+}
+
+/* SAVE */
+
+.save-btn{
+  background:#1677ff;
+  color:white;
+}
+
+/* CANCEL */
+
+.cancel-btn{
+  background:#e5e7eb;
+  color:#111827;
+}
+
+/* ================= DETAILS PAGE ================= */
+
+.details-page{
+  padding:20px;
+}
+
+.details-card{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  width:350px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.details-card h3{
+  margin-bottom:10px;
+  font-size:16px;
+}
+
+.details-card p{
+  margin:8px 0;
+  font-size:12px;
+  color:#374151;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+  .dashboard-layout{
+    flex-direction:column;
+  }
+
+  .sidebar{
+    width:100%;
+  }
+
+  .cards-container{
+    grid-template-columns:1fr;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+}
