@@ -64,4 +64,3 @@ export class DashboardComponent {}
 
     alert('Profile Saved Successfully!');
   }
-}

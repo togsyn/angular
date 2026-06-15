@@ -69,6 +69,7 @@ export class DashboardComponent {
   }
   closeDetails() {
   this.selectedStudent = null;
+  
 }
 
   /* SEARCH FILTER */

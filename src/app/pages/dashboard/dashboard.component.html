@@ -172,9 +172,9 @@
 
           </div>
 
-          <button [routerLink]="['/student-details', student.id]">
-  View Details
-</button>
+          <button (click)="selectStudent(student)">
+            View Details
+          </button>
 
         </div>
 

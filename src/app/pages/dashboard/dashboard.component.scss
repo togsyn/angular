@@ -251,12 +251,11 @@
 
 /* GRID */
 
-/* ===== SMALL INPUT FIELDS ===== */
-
 .form-grid{
   display:grid;
-  grid-template-columns:repeat(2, 240px);
-  gap:8px;
+  grid-template-columns:repeat(2,1fr);
+  gap:7px;
+  margin-bottom:7px;
 }
 
 /* FORM GROUP */
@@ -266,10 +265,11 @@
   flex-direction:column;
 }
 
-/* LABEL */
+/* LABELS */
 
 .form-group label{
   font-size:8px;
+  font-weight:600;
   margin-bottom:2px;
   color:#374151;
 }
@@ -279,45 +279,39 @@
 .form-group input,
 .form-group select,
 .form-group textarea{
-  width:240px;
-  height:18px;
-  padding:1px 5px;
+  width:100%;
   border:1px solid #d1d5db;
-  border-radius:3px;
+  border-radius:4px;
   outline:none;
+  padding:2px 6px;
   font-size:8px;
   background:white;
+}
+
+/* INPUT HEIGHT */
+
+.form-group input,
+.form-group select{
+  height:20px;
 }
 
 /* TEXTAREA */
 
 .form-group textarea{
-  height:38px;
+  height:42px;
   resize:none;
-  padding-top:4px;
+  padding-top:5px;
 }
 
-/* PHONE SECTION */
+/* PHONE FIELD */
 
 .phone-wrapper{
   display:flex;
-  align-items:center;
   gap:4px;
 }
 
-/* COUNTRY CODE */
-
 .country-code{
-  width:50px !important;
-  height:18px !important;
-  font-size:8px !important;
-  padding:1px 3px !important;
-}
-
-/* PHONE INPUT */
-
-.phone-wrapper input{
-  width:185px !important;
+  width:55px;
 }
 
 /* CHECKBOX */
@@ -331,42 +325,7 @@
 
 /* BUTTON AREA */
 
-/* ===== SMALL SAVE & CANCEL BUTTONS ===== */
 
-.button-group{
-  display:flex;
-  justify-content:flex-end;
-  gap:4px;
-  margin-top:8px;
-}
-
-.save-btn,
-.cancel-btn{
-  height:16px;
-  min-height:16px;
-  line-height:16px;
-  padding:0 6px;
-  border:none;
-  border-radius:3px;
-  font-size:7px;
-  font-weight:500;
-  cursor:pointer;
-  width:auto;
-}
-
-/* SAVE */
-
-.save-btn{
-  background:#1677ff;
-  color:white;
-}
-
-/* CANCEL */
-
-.cancel-btn{
-  background:#e5e7eb;
-  color:#111827;
-}
 
 /* ================= DETAILS PAGE ================= */
 
