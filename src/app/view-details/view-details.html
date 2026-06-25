@@ -1,0 +1,15 @@
+<div *ngIf="student" class="info-box section-container">
+  <h2>{{ student.name }}</h2>
+  <p><strong>Email:</strong> {{ student.email }}</p>
+  <p><strong>Contact:</strong> {{ student.contact }}</p>
+  <p><strong>Description:</strong> {{ student.description }}</p>
+  <p><strong>Status:</strong> {{ student.status }}</p>
+  <p><strong>Location:</strong> {{ student.country }}, {{ student.city }}</p>
+  <p><strong>Gender:</strong> {{ student.gender }}</p>
+  <p><strong>Subject:</strong> {{ student.subject }}</p>
+  <p><strong>Skills:</strong> {{ student.skills }}</p>
+</div>
+
+<div *ngIf="!student">
+  <p>No student details found.</p>
+</div>

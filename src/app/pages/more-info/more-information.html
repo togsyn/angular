@@ -1,140 +1,229 @@
-<div class="container">
+<h3>Personal Information</h3>
+<div class="more-info-container">
 
-  <div class="header">
-    <button class="back-btn" routerLink="/dashboard">
-      ← Back
-    </button>
+<div class="form-grid compact-grid">
 
-    <h2>User Profile</h2>
-  </div>
-
-  <div class="card">
-
-    <h3>Personal Information</h3>
-
-    <div class="form-group">
-      <label>I am</label>
-      <select>
-        <option>Student</option>
-        <option>Teacher</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label>Gender</label>
-      <select>
-        <option>Male</option>
-        <option>Female</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email">
-    </div>
-   <div class="form-group">
-  <label>Phone Number</label>
-
-  <div class="phone-box">
-
-    <select>
-      <option>+91</option>
-      <option>+1</option>
-      <option>+44</option>
-      <option>+61</option>
+  <!-- I AM -->
+  <div class="form-group">
+    <label>I am *</label>
+    <select [(ngModel)]="selectedRole">
+      <option value="Teacher">Teacher</option>
+      <option value="Student">Student</option>
     </select>
-
-    <input
-      type="text"
-      placeholder="Enter phone number">
-
   </div>
+
+  <!-- EXPERIENCE -->
+  <div class="form-group" *ngIf="selectedRole === 'Teacher'">
+    <label>Experience (Years)</label>
+    <select [(ngModel)]="selectedExperience">
+      <option *ngFor="let year of [].constructor(20); let i = index" [value]="i + 1">
+        {{ i + 1 }}
+      </option>
+    </select>
+  </div>
+
+  <!-- GENDER -->
+  <div class="form-group">
+    <label>Gender *</label>
+    <select [(ngModel)]="gender">
+      <option value="">Select Gender</option>
+      <option>Male</option>
+      <option>Female</option>
+    </select>
+  </div>
+
+  <!-- EMAIL -->
+  <div class="form-group">
+    <label>Email</label>
+    <input type="email" [(ngModel)]="email" placeholder="example@gmail.com" />
+  </div>
+
+  <!-- PHONE -->
+  <div class="form-group">
+    <label>Phone</label>
+    <div class="phone-wrapper">
+      <select class="country-code">
+        <option>+91</option>
+        <option>+1</option>
+        <option>+44</option>
+      </select>
+      <input type="text" [(ngModel)]="phone" placeholder="9876543210" />
+    </div>
+  </div>
+
+  <!-- SUBJECT -->
+  <div class="form-group">
+    <label>Subject</label>
+    <input type="text" [(ngModel)]="subject" placeholder="Passionate about Full-Stack Development" />
+  </div>
+
+  <!-- BUDGET -->
+  <div class="form-group">
+    <label>Budget</label>
+
+    <div class="budget-wrapper">
+
+      <select class="currency-select" [(ngModel)]="budgetType">
+        <option value="INR">₹</option>
+        <option value="USD">$</option>
+        <option value="EUR">€</option>
+      </select>
+
+      <input type="number" class="budget-amount" [(ngModel)]="budgetAmount" placeholder="Amount">
+
+      <select class="rate-select" [(ngModel)]="budgetType">
+        <option value="Per Hour">Per Hour</option>
+        <option value="Per Day">Per Day</option>
+        <option value="Per Week">Per Week</option>
+        <option value="Per Month">Per Month</option>
+      </select>
+
+    </div>
+  </div>
+
 </div>
-   
 
-    <h3>Professional Information</h3>
+<!-- ================= PROFESSIONAL ================= -->
+<h3>Professional Information</h3>
 
-    <div class="form-group">
-      <label>Skills</label>
-      <input type="text">
-    </div>
+<div class="form-grid">
 
-    <div class="form-group">
-      <label>Sub Skills</label>
-      <input type="text">
-    </div>
+  <!-- SKILLS -->
+  <div class="form-group">
+    <label>Skills</label>
+    <ng-select
+      [items]="skills"
+      bindLabel="skillName"
+      bindValue="id"
+      [(ngModel)]="selectedSkill"
+      (ngModelChange)="onSkillChange($event)"
+      [multiple]="false"
+      [clearable]="true"
+      placeholder="Select Skill">
+    </ng-select>
+  </div>
 
-    <div class="form-group">
-      <label>Qualification</label>
-      <input type="text">
-    </div>
+  <!-- SUBSKILLS -->
+  <div class="form-group">
+    <label>Subskills</label>
+    <ng-select
+      [items]="subSkillsList"
+      bindLabel="name"
+      bindValue="id"
+      [(ngModel)]="selectedSubSkills"
+      [multiple]="true"
+      [closeOnSelect]="false"
+      placeholder="Select Subskills">
+    </ng-select>
+  </div>
 
-    <div class="form-group">
-      <label>Subject</label>
-      <input type="text">
-    </div>
+  <!-- QUALIFICATION -->
+  <div class="form-group">
+    <label>Qualification</label>
+    <input type="text" [(ngModel)]="qualification" placeholder="B.Tech">
+  </div>
 
-    <div class="form-group">
-      <label>Description</label>
-      <textarea rows="4"></textarea>
-    </div>
+  <!-- DESCRIPTION -->
+  <div class="form-group">
+    <label>Description</label>
+    <textarea rows="4" [(ngModel)]="description" placeholder="Tell us about yourself"></textarea>
+  </div>
 
-    <div class="form-group">
-      <label>Hourly Rate / Budget</label>
-      <input type="number">
-    </div>
+</div>
 
-    <h3>Address</h3>
+<!-- ================= ADDRESS ================= -->
+<h3>Address</h3>
 
-    <div class="form-group">
-      <label>Address Line 1</label>
-      <input type="text">
-    </div>
+<div class="form-grid">
 
-    <div class="form-group">
-      <label>Address Line 2</label>
-      <input type="text">
-    </div>
+  <div class="form-group">
+    <label>Address Line 1</label>
+    <input type="text" [(ngModel)]="addressLine1" placeholder="Street Address">
+  </div>
 
-    <div class="form-group">
-      <label>Country</label>
-      <input type="text">
-    </div>
+  <div class="form-group">
+    <label>Address Line 2</label>
+    <input type="text" [(ngModel)]="addressLine2" placeholder="Apartment, Suite">
+  </div>
 
-    <div class="form-group">
-      <label>State</label>
-      <input type="text">
-    </div>
-
-    <div class="form-group">
-      <label>City</label>
-      <input type="text">
-    </div>
-
-    <div class="form-group">
-      <label>ZIP Code</label>
-      <input type="text">
-    </div>
-
-    <h3>Notification Preferences</h3>
-
-    <label>
-      <input type="checkbox">
-      Email Notifications
-    </label>
-
-    <br><br>
-
-    <label>
-      <input type="checkbox">
-      SMS Notifications
-    </label>
-
-    <div class="buttons">
-      <button class="cancel-btn">Cancel</button>
-      <button class="save-btn">Save Changes</button>
-    </div>
+  <!-- COUNTRY -->
+  <div class="form-group">
+    <label>Country</label>
+    <ng-select
+  [items]="countries"
+  bindLabel="countryName"
+  bindValue="id"
+  [(ngModel)]="selectedCountry"
+  (ngModelChange)="onCountryChange()"
+  [multiple]="false"
+  placeholder="Select Country">
+</ng-select>
 
   </div>
 
+
+
+  <!-- STATE -->
+  <div class="form-group">
+    <label>State</label>
+   <ng-select
+  [items]="states"
+  bindLabel="stateName"
+  bindValue="id"
+  [(ngModel)]="selectedState"
+  (ngModelChange)="onStateChange()"
+  [multiple]="false"
+  placeholder="Select State">
+</ng-select>
+
+  </div>
+
+  <!-- CITY -->
+  <div class="form-group">
+    <label>City</label>
+    <ng-select
+  [items]="cities"
+  bindLabel="cityName"
+  bindValue="id"
+  [(ngModel)]="selectedCity"
+  [multiple]="false"
+  placeholder="Select City">
+</ng-select>
+
+  </div>
+
+  <div class="form-group">
+    <label>ZIP Code</label>
+    <input type="text" [(ngModel)]="zipCode" placeholder="500001">
+
+  </div>
+
+</div>
+
+<!-- ================= NOTIFICATION ================= -->
+<h3>Notification Preferences</h3>
+
+<div class="checkbox-group">
+  <label>
+    <input type="checkbox" [(ngModel)]="emailNotifications" />
+    Email Notifications
+  </label>
+
+  <label>
+    <input type="checkbox" [(ngModel)]="smsNotifications" />
+    SMS Notifications
+  </label>
+</div>
+
+<!-- ================= BUTTONS ================= -->
+<div class="button-group">
+
+  <button type="button" class="save-btn" (click)="saveChanges()">
+    Save
+  </button>
+
+  <button type="button" class="cancel-btn" (click)="cancelChanges()">
+    Cancel
+  </button>
+</div>
 </div>

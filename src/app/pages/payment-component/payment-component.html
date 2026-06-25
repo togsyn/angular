@@ -1,0 +1,35 @@
+<div class="payment-container">
+  <h2>Wallet Payment</h2>
+  <p>Balance: {{ balance | currency:currency }}</p>
+
+  <label>Amount:</label>
+  <input type="number" [(ngModel)]="amount" />
+
+  <label>Currency:</label>
+  <select [(ngModel)]="currency">
+    <option value="INR">INR (Razorpay)</option>
+    <option value="usd">USD (Stripe)</option>
+  </select>
+
+  <div class="actions">
+    <button (click)="recharge(currency === 'INR' ? 'razorpay' : 'stripe')">
+      Recharge Wallet
+    </button>
+    <button (click)="pay()">Pay from Wallet</button>
+  </div>
+
+  <p>{{ message }}</p>
+
+  <h3>Transactions</h3>
+  <table>
+    <tr>
+      <th>Date</th><th>Type</th><th>Amount</th><th>Status</th>
+    </tr>
+    <tr *ngFor="let txn of transactions">
+      <td>{{ txn.createdAt }}</td>
+      <td>{{ txn.txnType }}</td>
+      <td>{{ txn.amount }}</td>
+      <td>{{ txn.status }}</td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,134 @@
+
+<div class="dashboard-layout">
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="top-header">
+      <h1>Dashboard</h1>
+      <p>Welcome to your dashboard</p>
+    </div>
+
+    <!-- Advanced Search -->
+    <div class="advanced-search">
+      <h3>Advanced Search</h3>
+      <div class="search-grid">
+        <!-- Country -->
+        <div class="search-item">
+          <label>Country</label>
+          <select [(ngModel)]="filters.country" (change)="onCountryChange(filters.country)">
+            <option value="">Select Country</option>
+            <option *ngFor="let c of countries" [value]="c.id">{{ c.countryName }}</option>
+          </select>
+        </div>
+
+        <!-- State -->
+        <div class="search-item">
+          <label>State</label>
+          <select [(ngModel)]="filters.state" (change)="onStateChange(filters.state)">
+            <option value="">Select State</option>
+            <option *ngFor="let s of states" [value]="s.id">{{ s.stateName }}</option>
+          </select>
+        </div>
+
+
+        <!-- City -->
+        <div class="search-item">
+          <label>City</label>
+          <select [(ngModel)]="filters.city">
+            <option value="">Select City</option>
+            <option *ngFor="let c of cities" [value]="c.id">{{ c.cityName }}</option>
+          </select>
+        </div>
+
+
+        <!-- Skills -->
+        <div class="search-item">
+          <label>Skills</label>
+          <select [(ngModel)]="filters.skill" (change)="onSkillChange(filters.skill)">
+            <option value="">Select Skill</option>
+            <option *ngFor="let s of skills" [value]="s.id">{{ s.skillName }}</option>
+          </select>
+        </div>
+
+        <!-- Subskills -->
+        <div class="search-item">
+          <label>Subskills</label>
+          <div class="select-wrapper">
+            <select class="styled-select" (click)="showSubskills = !showSubskills">
+              <option value="">
+                {{ filters.subskills?.length ? filters.subskills.length + ' selected' : 'Select Subskills' }}
+              </option>
+            </select>
+
+            <div class="dropdown-menu" *ngIf="showSubskills">
+              <div *ngFor="let sub of subSkills" class="checkbox-item">
+                <input
+                  type="checkbox"
+                  [value]="sub.id"
+                  [checked]="filters.subskills.includes(sub.id)"
+                  (change)="toggleSubskill(sub.id, $event)"
+                />
+                <label>{{ sub.name }}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Gender -->
+        <div class="search-item">
+          <label>Gender</label>
+          <select [(ngModel)]="filters.gender">
+            <option value="">Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <!-- Budget -->
+        <div class="search-item">
+          <label>Budget (₹)</label>
+          <input type="number" [(ngModel)]="filters.budget" placeholder="Enter Budget" />
+        </div>
+      </div>
+
+      <button class="search-btn" (click)="searchOppositeUsers()">Search</button>
+    </div>
+
+    <!-- User Cards -->
+    <div *ngIf="users && users.length > 0" class="info-box section-container">
+      <h2>Available {{ user?.role === 'Student' ? 'teachers' : 'students' }}</h2>
+      <div class="cards-container">
+        <div class="user-card" *ngFor="let u of users">
+          <div class="user-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" class="avatar" />
+            <h3>{{ u.userName }}</h3>
+            <span class="role-tag">{{ user.role === 'student' ? 'teacher': 'student' }}</span>
+          </div>
+          <div class="user-body">
+            <p><strong>Subject:</strong> {{ u.subject }}</p>
+            <p><strong>Skills:</strong> {{ u.skills }}</p>
+            <p><strong>Subskills:</strong> {{ u.subSkills }}</p>
+            <p><strong>Address:</strong> {{ u.city }}, {{ u.state }}, {{ u.country }}</p>
+            <p><strong>Gender:</strong> {{ u.gender }}</p>
+            <p>{{ u.description }}</p>
+          </div>
+          <div class="user-footer">
+            <button class="details-btn" [routerLink]="['/dashboard/viewdetails', u.id]">View Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="users && users.length === 0" class="no-data">
+      No user details found.
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination" *ngIf="totalPages > 1">
+      <button (click)="loadOppositeUsers(currentPage - 1)" [disabled]="currentPage === 0">Prev</button>
+      <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+      <button (click)="loadOppositeUsers(currentPage + 1)" [disabled]="currentPage + 1 >= totalPages">Next</button>
+    </div>
+  </div>
+</div>

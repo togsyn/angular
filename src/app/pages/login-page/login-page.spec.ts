@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AuthPage } from './auth-page';
+import { LoginPage } from './login-page';
 
-describe('AuthPage', () => {
+describe('LoginPage', () => {
   let component: AuthPage;
   let fixture: ComponentFixture<AuthPage>;
 

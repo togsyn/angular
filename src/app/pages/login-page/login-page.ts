@@ -8,13 +8,13 @@ import { jwtDecode } from 'jwt-decode';
 
 
 @Component({
-  selector: 'app-auth-page',
+  selector: 'app-login-page',
   standalone: true,
   imports: [CommonModule, FormsModule, RouterLink],
-  templateUrl: './auth-page.html',
-  styleUrl: './auth-page.scss'
+  templateUrl: './login-page.html',
+  styleUrl: './login-page.scss'
 })
-export class AuthPage {
+export class LoginComponent {
 
   email = '';
   password = '';

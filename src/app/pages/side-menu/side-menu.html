@@ -1,0 +1,18 @@
+<div class="sidebar">
+  <div class="profile-section">
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="profile-pic" />
+    <h3>Welcome Back</h3>
+    <p class="username">{{ user?.fullname }}</p>
+    <label for="fileUpload" class="upload-btn">Upload Photo</label>
+  </div>
+
+  <button [routerLink]="['/dashboard']">Dashboard</button>
+  <button [routerLink]="['/dashboard/more-information']">More Information</button>
+  <button [routerLink]="['/dashboard/profile']">Profile</button>
+  <button [routerLink]="['/dashboard/payment']">Payment</button>
+
+
+  <div class="logout-section">
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </div>
+</div>
